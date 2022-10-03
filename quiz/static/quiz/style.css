@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Belleza&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+}
+h3{
+    align-items:center;
+}
+.greet{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+}
+header{
+    max-width: 100%x;
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    align-items:center;
+    justify-content:space-around;
+    background: rgb(240, 236, 236);
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+header .logo img{
+    width: 100px;
+    margin: 0 60px;
+}
+header .menu{
+    display: flex;
+}
+header .menu ul{
+    display: flex;
+    padding: 0 150px;
+}
+header .menu ul li{
+    list-style: none;
+    padding: 0 30px;
+}
+header .menu ul li a{
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    font-family: 'Belleza', sans-serif;
+    color: #a17b49;
+    transition: all 0.3s;
+}
+header .menu ul li a:hover{
+    color: #F2D2A3;
+    text-decoration: underline;
+}
+header .menu-mobile{
+    display: none;
+}
+header .btn{
+    display: none;
+}
+/*      SECTION       */
+section .container{
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+/*      HOME       */
+a {
+    color: white;
+}
+
+.container {
+    width: 50%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.container form {
+    width: 50%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.container h1 {
+    padding: 1rem 0;
+
+}
+
+.container h5 {
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+}
+
+button {
+    min-width: 10%;
+}

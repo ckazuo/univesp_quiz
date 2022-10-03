@@ -1,0 +1,38 @@
+{% extends 'quiz/header.html' %}
+ 
+{% block content %}
+ 
+<div class="container ">
+        
+    <div class="card-columns" style="padding: 10px; margin: 20px;">
+        <div class="card" align="centre " style="width: 32rem; border:5px black solid">
+            <!--img class="card-img-top" src="http://kmit.in/emagazine/wp-content/uploads/2018/02/karnataka-results.jpg" alt="Card image cap"-->
+            <div class="card-body">
+                <h5 class="card-title">Score: {{score}}</h5>
+ 
+                <p class="card-text">Percentage: {{percent}}%</p>
+                <p class="card-text">Tempo Decorrido: {{time}} segundos</p>
+                <p class="card-text">Acertos: {{correct}}</p>
+                <p class="card-text">Erros: {{wrong}}</p>
+                <p class="card-text">Total: {{total}}</p>
+                <h5>Tente novamente e melhore da próxima vez!</h5>
+            </div>
+        </div>
+    </div>
+ 
+    <form method="POST" action="{% url 'quiz:ranking' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+          {{form}}
+          <label for="exampleInputScore" class="form-label">SCORE</label>
+          <input type="score" name="score1" id="InputScore" value ="{{score}}" disabled="true">
+          <input id="score" type="hidden" name="score" value="{{score}}" />
+          <div id="nomeHelp" class="form-text">Nunca vamos compartilhar seu nome com ninguém.</div>
+        </div>
+        <button type="submit" class="btn btn-primary" name="follow" value="follow">Salvar Pontuação</button>
+    </form>
+
+
+</div>
+ 
+{% endblock %}
