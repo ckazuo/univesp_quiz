@@ -1,9 +1,10 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
   <head>
     <title>Quiz Matemática com Django</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Bootstrap CSS-->
     <link 
       rel="stylesheet"
@@ -18,7 +19,6 @@
   </head>
   <body>
     {% include 'quiz/navbar.html' %} {% block content %} {% endblock %}
-    <br />
     <!-- Optional Javascript -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

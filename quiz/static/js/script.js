@@ -1,13 +1,19 @@
 
-setInterval(callTimer,1000);
+checktimer = document.getElementById("displaytimer");
+
+if (checktimer != null) {
+  setInterval(callTimer,1000);
+}
 
 let t = 0;
 function callTimer() {
   const cronometro = document.getElementById("displaytimer");
   const inputtag = document.getElementById("timer");
   t += 1;
-  cronometro.innerHTML = "<b>Timer: " + t + " seconds</b>";
-  inputtag.value = t;
+  if (cronometro != null) {
+    cronometro.innerHTML = "<b>Timer: " + t + " seconds</b>";
+    inputtag.value = t;
+  }
 }
 
 function openQuestion(evt, questionId) {

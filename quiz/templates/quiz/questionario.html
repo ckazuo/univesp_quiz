@@ -1,60 +1,68 @@
 {% extends 'quiz/body.html' %} 
 {% block content %} 
 {% load static %}
-<div class="container">
-  <h1>Questionário Matemática 1 Ano</h1>
+<div class="questionario">
+  <div class="container">
+    <h1>Questionário Matemática 1 Ano</h1>
 
-  <div align="right" id="displaytimer">
-    <b>Timer: 0 seconds</b>
-  </div>
+    <div align="right" id="displaytimer">
+      <b>Timer: 0 seconds</b>
+    </div>
 
-  <form method="post" action="">
-    {% csrf_token %}
-    <div class="btn-group">
+    <form method="post" action="">
+      {% csrf_token %}
+      <div class="btn-group">
+        {% for q in questions%}
+        <button class="btn btn-primary" type="button" onclick="openQuestion(event, '{{q.id}}')" name="follow" value="unfollow">
+          PERGUNTA {{ forloop.counter }} 
+        </button>
+        {% endfor %}
+      </div>
+      <br/>
       {% for q in questions%}
-      <button class="btn btn-primary" type="button" onclick="openQuestion(event, '{{q.id}}')" name="follow" value="unfollow">
-        PERGUNTA {{ forloop.counter }} 
-      </button>
+      <div id="{{q.id}}" class="tabcontent" style="display: none;">
+        <div class="form-group">
+          <label for="question">{{q.pergunta}}</label>
+        </div>
+
+        <div class="pergunta" id="pergunta{{q.id}}">
+          <div class="row align-items-start">
+            <div class="col-6">
+              <div id="{{q.id}}" class="btn-group-vertical" role="group" aria-label={{q.pergunta}}>
+                <button type="button" id="gridButton1" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa1}}')" value="{{q.alternativa1}}" class="btn btn-primary">{{q.alternativa1}}</button>
+                <br/>
+                <button type="button" id="gridButton2" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa2}}')" value="{{q.alternativa2}}" class="btn btn-primary">{{q.alternativa2}}</button>
+                <br/>
+                <button type="button" id="gridButton3" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa3}}')" value="{{q.alternativa3}}" class="btn btn-primary">{{q.alternativa3}}</button>
+                <br/>
+                <button type="button" id="gridButton4" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa4}}')" value="{{q.alternativa4}}" class="btn btn-primary">{{q.alternativa4}}</button>
+              </div>
+              <div>
+                <br/>
+                <label id="explica1{{q.id}}" class="explica" for="explica1" style="display: none;">EXPLICAÇÃO</label>
+                <label id="explica2{{q.id}}" class="explica" for="explica2" style="display: none;">{{q.explica}}</label>
+                <br/>
+              </div>
+            </div>
+            <div class="col-6">
+              {% if q.imagem  %}
+                <img src="{{ q.imagem.url }}" alt="My image" class="img-fluid">
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
       {% endfor %}
-    </div>
-    <br>    
-    {% for q in questions%}
-    <br>
-    <div id="{{q.id}}" class="tabcontent" style="display: none;">
-      <div class="form-group">
-        <label for="question">{{q.pergunta}}</label>
-      </div>
+    
+      <input id="timer" type="hidden" name="timer" value="" />
+      <input id="correto" type="hidden" name="correto" value="" />
+      <input id="errado" type="hidden" name="errado" value="" />
+      <br />
+      <form>
+        <button type="submit" id="btnresultado" class="btn btn-primary" name="follow" value="follow" style="display: none;">Resultado</button>
+      </form>
 
-      <div id="{{q.id}}" class="btn-group-vertical" role="group" aria-label={{q.pergunta}}>
-          <br/>
-          <button type="button" id="gridButton1" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa1}}')" value="{{q.alternativa1}}" class="btn btn-primary">{{q.alternativa1}}</button>
-          <br/>
-          <button type="button" id="gridButton2" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa2}}')" value="{{q.alternativa2}}" class="btn btn-primary">{{q.alternativa2}}</button>
-          <br/>
-          <button type="button" id="gridButton3" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa3}}')" value="{{q.alternativa3}}" class="btn btn-primary">{{q.alternativa3}}</button>
-          <br/>
-          <button type="button" id="gridButton4" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa4}}')" value="{{q.alternativa4}}" class="btn btn-primary">{{q.alternativa4}}</button>
-      </div>
-      <div>
-        <br/>
-        <label id="explica1{{q.id}}" class="explica" for="explica1" style="display: none;">EXPLICAÇÃO</label>
-        <label id="explica2{{q.id}}" class="explica" for="explica2" style="display: none;">{{q.explica}}</label>
-        <br/>
-      </div>
-    </div>
-    
-    {% endfor %}
-    
-    <input id="timer" type="hidden" name="timer" value="" />
-    <input id="correto" type="hidden" name="correto" value="" />
-    <input id="errado" type="hidden" name="errado" value="" />
-    <br />
-    <form>
-      <button type="submit" id="btnresultado" class="btn btn-primary" name="follow" value="follow" style="display: none;">Resultado</button>
     </form>
-
-
-  </form>
-
+  </div>
 </div>
 {% endblock %}

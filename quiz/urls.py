@@ -9,4 +9,7 @@ urlpatterns = [
     path("", views.homepage, name="homepage"),
     path("ranking", views.ranking, name="ranking"),
     path("questionario", views.questionario, name="questionario"),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

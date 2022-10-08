@@ -128,9 +128,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 SETTINGS_PATH = os.path.normpath(os.path.dirname(__file__))
 # Find templates in the same folder as settings.py.
 TEMPLATE_DIRS = (
     os.path.join(SETTINGS_PATH, 'templates'),
 )
+
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'img') 
+MEDIA_URL = '/img/'
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)

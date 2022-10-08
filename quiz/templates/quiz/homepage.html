@@ -1,12 +1,16 @@
 {% extends 'quiz/body.html' %} {% block content %} {% load static %}
-<div class="container">
-  <h1>Univesp TCC Quiz Matemática 1 ANO</h1>
-  <h5>
-    Desenvolvimento de aplicação web em formato de jogo lúdico (quiz) sobre
-    matemática de ensino fundamental de 1 Ano. 
-    Tem por objetivo uma alternativa de atividade adicional para poder diminuir o dano causado
-    pela paralização das aulas nas escolas públicas durante a pandemia
-  </h5>
-  <a class="btn btn-dark" href="{% url 'quiz:questionario' %}">COMEÇAR QUIZ</a>
+<div class="inicio">
+  <div class="container">
+    <h1>Univesp TCC Quiz Matemática 1 ANO</h1>
+    <h5>
+      Desenvolvimento de aplicação web em formato de jogo lúdico (quiz) sobre
+      matemática de ensino fundamental de 1 Ano. Tem por objetivo uma
+      alternativa de atividade adicional para poder diminuir o dano causado pela
+      paralização das aulas nas escolas públicas durante a pandemia
+    </h5>
+    <a class="btn btn-dark" href="{% url 'quiz:questionario' %}">
+      COMEÇAR QUIZ
+    </a>
+  </div>
 </div>
 {% endblock %}

@@ -9,7 +9,7 @@ class Questionario(models.Model):
     alternativa4 = models.CharField(max_length=100) 
     resposta = models.CharField(max_length=64) 
     explica = models.CharField(max_length=200)
-    imagem = models.CharField(max_length=200, default='sem imagem')
+    imagem = models.ImageField(null=True, blank=True, upload_to="img/")
 
     def __str__(self):
         return f"{self.pergunta}: {self.resposta} {self.explica}"
