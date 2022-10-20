@@ -1,11 +1,12 @@
+//if (checktimer != null) {
+//setInterval(callTimer,1000);
+//}
 
-checktimer = document.getElementById("displaytimer");
-
-if (checktimer != null) {
-  setInterval(callTimer,1000);
-}
-
+//liga o timer
+console.log("liga o timer");
 let t = 0;
+setInterval(callTimer,1000);
+
 function callTimer() {
   const cronometro = document.getElementById("displaytimer");
   const inputtag = document.getElementById("timer");
