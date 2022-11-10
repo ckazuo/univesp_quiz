@@ -5,7 +5,8 @@
 //liga o timer
 console.log("liga o timer");
 let t = 0;
-setInterval(callTimer,1000);
+var intervalo = setInterval(callTimer,1000);
+console.log(intervalo)
 
 function callTimer() {
   const cronometro = document.getElementById("displaytimer");
@@ -15,6 +16,13 @@ function callTimer() {
     cronometro.innerHTML = "<b>Timer: " + t + " seconds</b>";
     inputtag.value = t;
   }
+  resultado = document.querySelector("#btnresultado");
+  if (resultado.style.display === "block") 
+  {
+    console.log("Todas questões respondidas limpar timer");
+    clearInterval(intervalo);
+  }
+
 }
 
 function openQuestion(evt, questionId) {
@@ -28,14 +36,14 @@ function openQuestion(evt, questionId) {
   }
 
   //Get all elements with class='tablinks' and remove the active
-  tablinks = document.getElementsByClassName("btn btn-info");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace("active", "");
-  }
+  //tablinks = document.getElementsByClassName("btn btn-info");
+  //for (i = 0; i < tablinks.length; i++) {
+  //  tablinks[i].className = tablinks[i].className.replace("active", "");
+  //}
 
   //Show the current tab and add an active class to the button that opened the tab
   document.getElementById(questionId).style.display = "block";
-  evt.currentTarget.className += "active";
+  //evt.currentTarget.className += "active";
 }
 
 function checkAnswer(evt, questionId, buttonId, resposta, alternativa) {
@@ -100,5 +108,8 @@ function checkAnswer(evt, questionId, buttonId, resposta, alternativa) {
     const inputright = document.getElementById("correto");
     inputwrong.value = wrong.length;
     inputright.value = right.length;
+    console.log("Todas questões respondidas limpar timer");
+    console.log(intervalo)
+    clearInterval(intervalo);
   }
 }
