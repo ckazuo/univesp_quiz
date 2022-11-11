@@ -182,6 +182,10 @@ form  {
     color: white;
 }
 
+.questionario img {
+    width: 50%;
+}
+
 .quadro {
     padding-top: 24vh;
     width: 100%;

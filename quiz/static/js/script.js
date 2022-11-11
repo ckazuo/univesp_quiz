@@ -67,10 +67,10 @@ function checkAnswer(evt, questionId, buttonId, resposta, alternativa) {
       if (buttons[i].id === buttonId) {
         if (resposta === alternativa) {
           console.log("Resposta Correta");
-          buttons[i].className = buttons[i].className.replace("btn btn-primary","btn btn-success");
+          buttons[i].className = buttons[i].className.replace("btn btn-info","btn btn-success");
         } else {
           console.log("Resposta Incorreta");
-          buttons[i].className = buttons[i].className.replace("btn btn-primary","btn btn-danger");
+          buttons[i].className = buttons[i].className.replace("btn btn-info","btn btn-danger");
         }
       }
     }
