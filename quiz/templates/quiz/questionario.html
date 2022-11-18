@@ -3,50 +3,48 @@
 {% load static %}
 <div class="questionario">
   <div class="container quadro">
-    <h1>Questionário Matemática 1 Ano</h1>
-
-    <div align="right" id="displaytimer">
-      <b>Timer: 0 seconds</b>
-    </div>
 
     <form method="post" action="">
       {% csrf_token %}
       <div class="btn-group"  >
         {% for q in questions%}
-        <button class="btn btn-info" type="button" onclick="openQuestion(event, '{{q.id}}')" name="follow" value="unfollow">
+         <button style="background: linear-gradient(#a13090, #5b6acd);width: 100%; height: 90%; margin-top: 7px ;border-color: rgb(0, 0, 0);" class="btn btn-primary" type="button" onclick="openQuestion(event, '{{q.id}}')" name="follow" value="unfollow" >
           PERGUNTA {{ forloop.counter }} 
         </button>
         {% endfor %}
+      </div>
+      <div style="color: rgb(0, 0, 0);" allign="right" id="displaytimer">
+        <b>Timer: 0 seconds</b>
       </div>
       <br/>
       {% for q in questions%}
       <div id="{{q.id}}" class="tabcontent" style="display: none;">
         <div class="form-group">
-          <label for="question">{{q.pergunta}}</label>
+          <label style="color: rgb(255, 255, 255); width: 100%;" for="question"><b>{{q.pergunta}}</b></label>
         </div>
 
         <div class="pergunta" id="pergunta{{q.id}}">
           <div class="row align-items-start">
             <div class="col-6">
-              <div id="{{q.id}}" class="btn-group-vertical" role="group" aria-label={{q.pergunta}}>
-                <button type="button" id="gridButton1" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa1}}')" value="{{q.alternativa1}}" class="btn btn-info">{{q.alternativa1}}</button>
+              <div style="position: flex  ;" id="{{q.id}}" class="btn-group-vertical" role="group" aria-label={{q.pergunta}}>
+                <button type="button" id="gridButton1" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa1}}')" value="{{q.alternativa1}}" class="btn btn-primary">{{q.alternativa1}}</button>
                 <br/>
-                <button type="button" id="gridButton2" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa2}}')" value="{{q.alternativa2}}" class="btn btn-info">{{q.alternativa2}}</button>
+                <button type="button" id="gridButton2" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa2}}')" value="{{q.alternativa2}}" class="btn btn-primary">{{q.alternativa2}}</button>
                 <br/>
-                <button type="button" id="gridButton3" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa3}}')" value="{{q.alternativa3}}" class="btn btn-info">{{q.alternativa3}}</button>
+                <button type="button" id="gridButton3" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa3}}')" value="{{q.alternativa3}}" class="btn btn-primary">{{q.alternativa3}}</button>
                 <br/>
-                <button type="button" id="gridButton4" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa4}}')" value="{{q.alternativa4}}" class="btn btn-info">{{q.alternativa4}}</button>
+                <button type="button" id="gridButton4" onclick="checkAnswer(event, '{{q.id}}', id, '{{q.resposta}}', '{{q.alternativa4}}')" value="{{q.alternativa4}}" class="btn btn-primary">{{q.alternativa4}}</button>
               </div>
               <div>
                 <br/>
-                <label id="explica1{{q.id}}" class="explica" for="explica1" style="display: none;">EXPLICAÇÃO</label>
-                <label id="explica2{{q.id}}" class="explica" for="explica2" style="display: none;">{{q.explica}}</label>
+                <label id="explica1{{q.id}}" class="explica" for="explica1" style="display: none; position: static ; margin-top: -35%; left: -15%; transform: translate(135%, 0%)"><b>EXPLICAÇÃO</b></label>
+                <label id="explica2{{q.id}}" class="explica" for="explica2" style="display: none; position: static  ; height: 10%; width: 60%; margin-top: 0%; left: -15%; transform: translate(225%, 0%); color: rgb(255, 255, 255);">{{q.explica}}</label>
                 <br/>
               </div>
             </div>
             <div class="col-6">
               {% if q.imagem  %}
-                <img src="{{ q.imagem.url }}" alt="My image" class="img-fluid">
+              <img src="{{ q.imagem.url }}" alt="My image" class="img-fluid" style="height: 15pc; width: 25pc; margin-inline: -60%">
               {% endif %}
             </div>
           </div>
@@ -59,10 +57,9 @@
       <input id="errado" type="hidden" name="errado" value="" />
       <br />
       <form>
-        <button type="submit" id="btnresultado" class="btn btn-primary" name="follow" value="follow" style="display: none;">Resultado</button>
+        <button type="submit" id="btnresultado" class="btn btn-primary" name="follow" value="follow" style="display:none; margin-top: 4%; background-color: green; ">Resultado</button>
       </form>
 
-    </form>
   </div>
 </div>
 {% endblock %}
